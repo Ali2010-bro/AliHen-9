@@ -1,39 +1,261 @@
 <html manifest="Cache.manifest">
 <head>
 <meta charset="utf-8">
-<title>Ali Host Auto Exploit GoldHen 9.00fw</title>
+<title>Ali Host - Dashboard 9.00</title>
 <style>
-    * {
-        box-sizing: border-box;
-    }
-    
-    html, body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
-        font-size: 20px;
-        text-align: center;
-        color: #FFFFFF;
-        background: radial-gradient(circle at top, #1a103c 0%, #0b0719 60%, #05030a 100%);
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
+    :root {
+        --primary: #00f0ff;
+        --secondary: #ff0055;
+        --bg-dark: #0a0e17;
+        --card-bg: rgba(16, 23, 38, 0.75);
     }
 
-    .header-container {
-        margin-top: 50px;
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        background-color: var(--bg-dark);
+        background-image: 
+            radial-gradient(at 0% 0%, rgba(0, 240, 255, 0.12) 0px, transparent 50%),
+            radial-gradient(at 100% 100%, rgba(255, 0, 85, 0.12) 0px, transparent 50%);
+        color: #ffffff;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 20px;
-        width: 90%;
-        max-width: 900px;
+        overflow: hidden;
+    }
+
+    .dashboard-container {
+        width: 100%;
+        max-width: 850px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Top Banner Card */
+    .header-card {
+        background: var(--card-bg);
+        border: 1px solid rgba(0, 240, 255, 0.3);
+        border-radius: 16px;
+        padding: 25px;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 240, 255, 0.05);
+        text-align: center;
+        position: relative;
+    }
+
+    .system-badge {
+        display: inline-block;
+        background: rgba(0, 240, 255, 0.1);
+        border: 1px solid var(--primary);
+        color: var(--primary);
+        padding: 4px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
     }
 
     .main-title {
-        font-size: 32px;
-        font-weight: 900;
+        font-size: 28px;
+        font-weight: 800;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+    }
+
+    .main-title span {
+        color: var(--primary);
+        text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    }
+
+    /* Exploit Progress Grid */
+    .status-card {
+        background: var(--card-bg);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 30px;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    #progress {
+        font-size: 22px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 20px;
+        letter-spacing: 0.5px;
+    }
+
+    .progress-bar-container {
+        width: 100%;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .progress-bar-fill {
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        border-radius: 10px;
+        box-shadow: 0 0 12px var(--primary);
+        animation: pulseBar 2s infinite alternate;
+    }
+
+    @keyframes pulseBar {
+        0% { opacity: 0.7; }
+        100% { opacity: 1; filter: drop-shadow(0 0 8px var(--primary)); }
+    }
+
+    /* Team Info Cards Grid */
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .info-card {
+        background: var(--card-bg);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        padding: 18px;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        text-align: left;
+    }
+
+    .info-card-title {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+
+    .info-card-value {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--primary);
+    }
+
+    .thanks-list {
+        font-size: 13px;
+        color: #a0aab8;
+        line-height: 1.4;
+    }
+
+    @media (max-width: 600px) {
+        .info-grid {
+            grid-template-columns: 1fr;
+        }
+        .main-title {
+            font-size: 22px;
+        }
+    }
+</style>
+
+<script>
+if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
+</script>
+<script src="int64.js"></script>
+<script src="rop.js"></script>
+<script src="kexploit.js" defer></script>
+<script src="exploit.js" defer></script>
+<script>
+function load_pocB(){
+ var req = new XMLHttpRequest();
+ req.responseType = "arraybuffer";
+ req.open('GET', PLfile);
+ req.send();
+ req.onreadystatechange = function () {
+  if (req.readyState == 4) {
+   PLD = req.response;
+   var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
+   var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
+   var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
+   var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
+   tmp.set(new Uint8Array(req.response), 0);
+   tmp.set(padding, req.response.byteLength);
+   var shellcode = new Uint32Array(tmp.buffer);
+   pl.set(shellcode,0);
+   var pthread = p.malloc(0x10);
+   chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
+   allset();
+  }
+ };
+}
+
+function jbdone() {
+document.getElementById("input").remove();
+window.progress.innerHTML="Jailbreak Done";
+goldhen();
+}
+function goldhen(){
+    progress.innerHTML="loading... please wait";
+    LoadedMSG="GoldHen Loaded Successfully";
+    PLfile = "goldhen.bin";
+    out_jb = "AllPL";
+    load_pocB();
+    }
+function allset() {
+window.progress.innerHTML= LoadedMSG
+}
+</script>
+</head>
+
+<body>
+
+<div class="dashboard-container">
+    <!-- Header -->
+    <div class="header-card">
+        <div class="system-badge">PS4 Firmware 9.00</div>
+        <div class="main-title"><span>Ali</span> Host Exploit</div>
+    </div>
+
+    <!-- Exploit Status -->
+    <div class="status-card">
+        <div id="progress">Initializing System...</div>
+        <div class="progress-bar-container">
+            <div class="progress-bar-fill"></div>
+        </div>
+    </div>
+
+    <!-- Details Grid -->
+    <div class="info-grid">
+        <div class="info-card">
+            <div class="info-card-title">Developer & Host</div>
+            <div class="info-card-value">Ali</div>
+        </div>
+        <div class="info-card">
+            <div class="info-card-title">Special Thanks</div>
+            <div class="thanks-list">Sleirsgoevy, Al Azif, ChendoChap, SiSTRo, Specter, Znullptr</div>
+        </div>
+    </div>
+</div>
+
+<div style="display:none">
+    <button id="button-Payload" onclick="goldhen()">GoldHen</button>
+</div>
+
+</body>
+</html>
         letter-spacing: 1px;
         background: linear-gradient(90deg, #ff007f, #7928ca, #00dfd8);
         background-size: 200% auto;
