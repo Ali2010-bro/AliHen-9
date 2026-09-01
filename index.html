@@ -1,39 +1,214 @@
 <html manifest="Cache.manifest">
 <head>
 <meta charset="utf-8">
-<title>Ali Host - Dashboard 9.00</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALI HOST PS4 9.00</title>
 <style>
-    :root {
-        --primary: #00f0ff;
-        --secondary: #ff0055;
-        --bg-dark: #0a0e17;
-        --card-bg: rgba(16, 23, 38, 0.75);
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800;900&family=Rajdhani:wght@600;700&display=swap');
 
     * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+        user-select: none;
     }
 
     body {
-        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-        background-color: var(--bg-dark);
-        background-image: 
-            radial-gradient(at 0% 0%, rgba(0, 240, 255, 0.12) 0px, transparent 50%),
-            radial-gradient(at 100% 100%, rgba(255, 0, 85, 0.12) 0px, transparent 50%);
+        font-family: 'Rajdhani', sans-serif;
+        background: #080b12;
         color: #ffffff;
         min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 20px;
         overflow: hidden;
+        position: relative;
     }
 
-    .dashboard-container {
-        width: 100%;
-        max-width: 850px;
+    /* خلفية متدرجة حديثة */
+    body::before {
+        content: '';
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: #00f2fe;
+        filter: blur(150px);
+        opacity: 0.15;
+        top: 10%;
+        left: 20%;
+    }
+
+    body::after {
+        content: '';
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: #4facfe;
+        filter: blur(150px);
+        opacity: 0.15;
+        bottom: 10%;
+        right: 20%;
+    }
+
+    .main-card {
+        background: rgba(15, 23, 42, 0.85);
+        border: 1px solid rgba(0, 242, 254, 0.2);
+        border-radius: 24px;
+        padding: 40px;
+        width: 90%;
+        max-width: 650px;
+        text-align: center;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        z-index: 10;
+    }
+
+    .badge {
+        display: inline-block;
+        background: rgba(0, 242, 254, 0.1);
+        color: #00f2fe;
+        border: 1px solid rgba(0, 242, 254, 0.3);
+        padding: 6px 16px;
+        border-radius: 50px;
+        font-size: 14px;
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 800;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+    }
+
+    .title {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 28px;
+        font-weight: 900;
+        letter-spacing: 1.5px;
+        color: #ffffff;
+        margin-bottom: 30px;
+        text-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+    }
+
+    .title span {
+        color: #00f2fe;
+    }
+
+    .status-box {
+        background: rgba(8, 11, 18, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        padding: 25px;
+        margin-bottom: 25px;
+    }
+
+    #progress {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 20px;
+        font-weight: 800;
+        color: #00f2fe;
+        letter-spacing: 1px;
+    }
+
+    .credits {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 20px;
+        font-size: 16px;
+        color: #94a3b8;
+    }
+
+    .developer {
+        font-family: 'Orbitron', sans-serif;
+        color: #ffffff;
+        font-weight: 800;
+        font-size: 15px;
+    }
+
+    .thanks {
+        font-size: 13px;
+        color: #64748b;
+        max-width: 60%;
+        text-align: right;
+    }
+</style>
+
+<script>
+if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
+</script>
+<script src="int64.js"></script>
+<script src="rop.js"></script>
+<script src="kexploit.js" defer></script>
+<script src="exploit.js" defer></script>
+<script>
+function load_pocB(){
+ var req = new XMLHttpRequest();
+ req.responseType = "arraybuffer";
+ req.open('GET', PLfile);
+ req.send();
+ req.onreadystatechange = function () {
+  if (req.readyState == 4) {
+   PLD = req.response;
+   var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
+   var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
+   var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
+   var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
+   tmp.set(new Uint8Array(req.response), 0);
+   tmp.set(padding, req.response.byteLength);
+   var shellcode = new Uint32Array(tmp.buffer);
+   pl.set(shellcode,0);
+   var pthread = p.malloc(0x10);
+   chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
+   allset();
+  }
+ };
+}
+
+function jbdone() {
+document.getElementById("input").remove();
+window.progress.innerHTML="Jailbreak Done";
+goldhen();
+}
+function goldhen(){
+    progress.innerHTML="Loading GoldHen...";
+    LoadedMSG="GoldHen Loaded Successfully";
+    PLfile = "goldhen.bin";
+    out_jb = "AllPL";
+    load_pocB();
+    }
+function allset() {
+window.progress.innerHTML= LoadedMSG
+}
+</script>
+</head>
+
+<body>
+
+<div class="main-card">
+    <div class="badge">PS4 9.00 FW</div>
+    <div class="title"><span>ALI</span> HOST EXPLOIT</div>
+
+    <div class="status-box">
+        <div id="progress">Jailbreaking...</div>
+    </div>
+
+    <div class="credits">
+        <div>
+            <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">Host By</div>
+            <div class="developer">Ali</div>
+        </div>
+        <div class="thanks">
+            Thanks: Sleirsgoevy, Al Azif, SiSTRo, Specter
+        </div>
+    </div>
+</div>
+
+<div style="display:none">
+    <button id="button-Payload" onclick="goldhen()">GoldHen</button>
+</div>
+
+</body>
+</html>
         display: grid;
         grid-template-columns: 1fr;
         gap: 20px;
