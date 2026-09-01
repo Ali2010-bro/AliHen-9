@@ -1,39 +1,214 @@
 <html manifest="Cache.manifest">
 <head>
+<meta charset="utf-8">
+<title>Ali mahmood and Yassir and Omar host 9.00</title>
 <style>
-    html, body{
-margin:auto;
-font-family:sans-serif;
-font-size:20px;
-font-weight:lighter;
-text-align: center;
-color:#FFFFFF;
-background-size:cover;
-overflow: hidden;
+    * {
+        box-sizing: border-box;
+    }
+    
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+        font-size: 20px;
+        text-align: center;
+        color: #FFFFFF;
+        background: radial-gradient(circle at top, #1a103c 0%, #0b0719 60%, #05030a 100%);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Container */
+    .header-container {
+        margin-top: 60px;
+        padding: 20px;
+        width: 90%;
+        max-width: 900px;
+    }
+
+    /* Modern Gradient Title */
+    .main-title {
+        font-size: 36px;
+        font-weight: 900;
+        letter-spacing: 1px;
+        background: linear-gradient(90deg, #ff007f, #7928ca, #00dfd8);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientGlow 4s ease infinite;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        filter: drop-shadow(0px 4px 20px rgba(121, 40, 202, 0.6));
+    }
+
+    @keyframes gradientGlow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* Status & Progress Text */
+    #progress {
+        font-size: 26px;
+        font-weight: 700;
+        color: #00f2fe;
+        text-shadow: 0 0 12px rgba(0, 242, 254, 0.8), 0 0 25px rgba(0, 242, 254, 0.4);
+        margin: 25px 0;
+        letter-spacing: 1px;
+    }
+
+    /* Modern Glassmorphic Button */
+    button {
+        background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 2px solid rgba(0, 242, 254, 0.5);
+        border-radius: 16px;
+        width: 240px;
+        height: 52px;
+        font-size: 19px;
+        font-weight: bold;
+        color: #ffffff;
+        cursor: pointer;
+        box-shadow: 0 8px 25px rgba(0, 242, 254, 0.25);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    button:hover {
+        background: linear-gradient(135deg, #00f2fe, #4facfe);
+        color: #000000;
+        border-color: #00f2fe;
+        box-shadow: 0 0 30px rgba(0, 242, 254, 0.8);
+        transform: translateY(-3px) scale(1.03);
+    }
+
+    /* Modern Footer Card */
+    .content {
+        width: 90%;
+        max-width: 900px;
+        margin-bottom: 35px;
+        background: rgba(22, 18, 43, 0.55);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: white;
+        border-radius: 24px;
+        padding: 20px 30px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    }
+
+    .yellow {
+        color: #ff007f;
+        font-weight: 700;
+        font-size: 20px;
+        letter-spacing: 0.5px;
+    }
+
+    .hue {
+        display: inline-block;
+        padding: 8px 20px;
+        border-radius: 14px;
+        font-weight: 800;
+        font-size: 22px;
+        color: #ffffff;
+        background: linear-gradient(90deg, #7928ca, #ff007f, #00dfd8);
+        background-size: 200% auto;
+        box-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
+        animation: hueAnim 5s linear infinite;
+    }
+
+    @keyframes hueAnim {
+        0% { filter: hue-rotate(0deg); }
+        100% { filter: hue-rotate(360deg); }
+    }
+
+    .thanks-text {
+        font-size: 18px;
+        color: #e0e0e0;
+        margin-top: 15px;
+        line-height: 1.5;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+</style>
+
+<script>
+if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
+</script>
+<script src="int64.js"></script>
+<script src="rop.js"></script>
+<script src="kexploit.js" defer></script>
+<script src="exploit.js" defer></script>
+<script>
+function load_pocB(){
+ var req = new XMLHttpRequest();
+ req.responseType = "arraybuffer";
+ req.open('GET', PLfile);
+ req.send();
+ req.onreadystatechange = function () {
+  if (req.readyState == 4) {
+   PLD = req.response;
+   var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
+   var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
+   var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
+   var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
+   tmp.set(new Uint8Array(req.response), 0);
+   tmp.set(padding, req.response.byteLength);
+   var shellcode = new Uint32Array(tmp.buffer);
+   pl.set(shellcode,0);
+   var pthread = p.malloc(0x10);
+   chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
+   allset();
+  }
+ };
 }
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+function jbdone() {
+document.getElementById("input").remove();
+window.progress.innerHTML="Jailbreak Done";
+goldhen();
 }
- .content {
-  width:90%;
-  height:15%;
-  margin-left:3.5%;
-  background:rgba(0,0,0,0.5);
-  color:white;
-  margin-top:0%;
-  font-size:25px;
-  text-align:center;
-  border-radius:30px;
+function goldhen(){
+    progress.innerHTML="loading... please wait";
+    LoadedMSG="GoldHen Loaded";
+    PLfile = "goldhen.bin";
+    out_jb = "AllPL";
+    load_pocB();
+    }
+function allset() {
+window.progress.innerHTML= LoadedMSG
+}
+</script>
+</head>
+
+<body>
+
+<div class="header-container">
+    <div class="main-title">Ali mahmood and Yassir and Omar host 9.00</div>
+    <div id="progress">Jailbreaking....</div>
+</div>
+
+<div style="text-align:center; display:none">
+    <button id="button-Payload" onMouseOver="progress.innerHTML='GoldHen v2.4 Beta 18 9 by SISTR0 for PS4 9.00 Fw'" onmouseout="progress.innerHTML='Status'" type="button" onclick="goldhen()">GoldHenV2.4b189</button>
+</div>
+
+<div id="all" class="content">
+    <div>
+        <span class="yellow">Designed & Hosted by:</span>&nbsp;&nbsp; 
+        <span class="hue">Ali mahmood and Yassir and Omar</span>
+        <br><br>
+        <span class="yellow">Super Special Thanks To:</span>
+        <div class="thanks-text">Sleirsgoevy , Al Azif , ChendoChap , SiSTRo , Abc , Specter , Znullptr ...</div>
+    </div>
+</div>
+
+</body>
+</html>
   padding:20px;
   line-height:12px;
   position:absolute;bottom:0px;
