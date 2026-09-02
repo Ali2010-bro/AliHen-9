@@ -38,12 +38,12 @@ function load_pocB(){
 function jbdone() {
 var inp = document.getElementById("input");
 if(inp) inp.remove();
-window.progress.innerHTML="Done"; // تم تغيير النص ليكون محايداً
+window.progress.innerHTML="Done";
 goldhen();
 }
 function goldhen(){
     progress.innerHTML="Loading...";
-    LoadedMSG="Mockup Loaded"; // تم تغيير النص ليكون محايداً
+    LoadedMSG="Mockup Loaded";
     PLfile = "goldhen.bin";
     out_jb = "AllPL";
     load_pocB();
@@ -54,32 +54,29 @@ window.progress.innerHTML= LoadedMSG
 </script>
 
 <style>
-/* إعادة تعيين الأنماط الافتراضية */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* ضبط جسم الصفحة لملء الشاشة واستخدام لون خلفية داكن جداً */
 html, body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* استخدام خطوط نظامية نظيفة */
-    background: #010203; /* خلفية داكنة جداً تقترب من السواد */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #040818;
     color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* الحاوية الرئيسية للخلفية مع تأثير الدوائر المتوهجة */
 .background-wrapper {
     position: relative;
     width: 100vw;
     height: 100vh;
-    background: radial-gradient(circle at 50% 50%, #080c1f 0%, #010203 100%);
+    background: radial-gradient(ellipse at 50% 40%, #0b1535 0%, #040818 70%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -87,163 +84,179 @@ html, body {
     overflow: hidden;
 }
 
-/* الدائرة الملونة المتوهجة على اليسار (أزرق داكن) */
 .glow-circle-left {
     position: absolute;
-    width: 450px;
-    height: 450px;
-    left: -150px;
-    top: 20%;
+    width: 380px;
+    height: 380px;
+    left: -100px;
+    top: 18%;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 50, 150, 0.6) 0%, rgba(0, 20, 60, 0.2) 60%, transparent 100%);
-    filter: blur(40px);
+    background: radial-gradient(circle, rgba(30, 80, 220, 0.75) 0%, rgba(10, 30, 120, 0.3) 55%, transparent 100%);
+    filter: blur(25px);
 }
 
-/* الدائرة الملونة المتوهجة على اليمين (أرجواني) */
 .glow-circle-right {
     position: absolute;
-    width: 400px;
-    height: 400px;
-    right: -100px;
-    top: 15%;
+    width: 300px;
+    height: 300px;
+    right: -50px;
+    top: 8%;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(100, 30, 200, 0.6) 0%, rgba(50, 10, 100, 0.2) 60%, transparent 100%);
-    filter: blur(40px);
+    background: radial-gradient(circle, rgba(100, 50, 230, 0.7) 0%, rgba(60, 20, 150, 0.25) 55%, transparent 100%);
+    filter: blur(20px);
 }
 
-/* حاوية المحتوى الرئيسي */
 .main-container {
-    z-index: 2; /* لضمان ظهور المحتوى فوق الدوائر المتوهجة */
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 800px; /* تحديد عرض أقصى للحاوية */
+    max-width: 800px;
     padding: 20px;
 }
 
-/* تنسيق العنوان الرئيسي */
+/* ===== العنوان الرئيسي ===== */
 .header-title {
     display: flex;
     align-items: center;
-    gap: 15px;
-    font-size: 50px;
-    font-weight: 800;
-    color: #ffffff;
-    margin-bottom: 5px;
+    gap: 14px;
+    margin-bottom: 8px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
-/* تنسيق أيقونة البرق */
-.lightning-icon {
-    width: 35px;
-    height: 35px;
-    fill: #1e90ff; /* لون أزرق زاهي للأيقونة */
+.header-title .lightning-icon-wrap {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #1a6fff 0%, #7b2fff 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 22px rgba(100, 120, 255, 0.55);
+    flex-shrink: 0;
 }
 
-/* تنسيق العنوان الفرعي */
+.header-title .lightning-icon-wrap svg {
+    width: 28px;
+    height: 28px;
+    fill: #ffffff;
+}
+
+.header-title span {
+    font-size: 54px;
+    font-weight: 900;
+    background: linear-gradient(90deg, #4fc3f7 0%, #a78bfa 40%, #f9a8d4 80%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+/* ===== العنوان الفرعي ===== */
 .sub-title {
-    font-size: 16px;
-    color: #a0aec0; /* لون رمادي فاتح للعنوان الفرعي */
-    margin-bottom: 40px;
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 36px;
     font-weight: 400;
+    letter-spacing: 0.3px;
+    text-align: center;
 }
 
-/* تنسيق قسم الحالة (جاري التحميل) */
+/* ===== قسم الحالة ===== */
 .status-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 36px;
 }
 
 .status-text {
-    font-size: 28px;
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 10px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #22d3ee;
+    text-shadow: 0 0 20px rgba(34, 211, 238, 0.6);
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
 }
 
-/* تنسيق النقاط الثلاث المتحركة */
+/* ===== النقاط المتحركة ===== */
 .dots-loader {
     display: flex;
-    gap: 8px;
+    gap: 10px;
 }
 
 .dot {
-    width: 10px;
-    height: 10px;
+    width: 11px;
+    height: 11px;
     border-radius: 50%;
-    background-color: #ffffff; /* لون أبيض للنقاط */
     animation: bounce 1.4s infinite ease-in-out both;
 }
 
-.dot:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.dot:nth-child(3) {
-    animation-delay: 0.4s;
-}
+.dot:nth-child(1) { background: #38bdf8; animation-delay: 0s; }
+.dot:nth-child(2) { background: #818cf8; animation-delay: 0.22s; }
+.dot:nth-child(3) { background: #f472b6; animation-delay: 0.44s; }
 
 @keyframes bounce {
-    0%, 80%, 100% { transform: scale(0); }
-    40% { transform: scale(1); }
+    0%, 80%, 100% { transform: scale(0.4); opacity: 0.5; }
+    40%            { transform: scale(1.1); opacity: 1; }
 }
 
-/* تنسيق الكروت "الزجاجية" */
+/* ===== الكروت ===== */
 .card {
     width: 100%;
-    background: rgba(10, 15, 30, 0.5); /* خلفية نصف شفافة داكنة */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* إطار رقيق أبيض شفاف */
-    border-radius: 15px;
-    padding: 20px 25px;
-    margin-bottom: 20px;
-    backdrop-filter: blur(10px); /* تأثير الضبابية للخلفية */
+    background: rgba(8, 14, 35, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 18px;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     display: flex;
     align-items: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
 }
 
-/* تنسيق حاوية الأيقونة داخل الكرت */
 .card-icon-container {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.05); /* خلفية أيقونة خفيفة جداً */
+    background: linear-gradient(135deg, rgba(100, 60, 220, 0.65) 0%, rgba(60, 30, 160, 0.45) 100%);
+    border: 1px solid rgba(150, 100, 255, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 20px;
     flex-shrink: 0;
+    box-shadow: 0 0 18px rgba(110, 60, 230, 0.4);
 }
 
 .card-icon {
-    width: 20px;
-    height: 20px;
-    fill: #ffffff; /* لون أبيض للأيقونة */
+    width: 22px;
+    height: 22px;
+    fill: #ffffff;
 }
 
-/* تنسيق محتوى الكرت */
 .card-content {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 7px;
 }
 
 .card-label {
-    font-size: 14px;
-    color: #a0aec0; /* لون رمادي فاتح للعنوان الفرعي للكرت */
+    font-size: 13px;
+    color: #94a3b8;
+    font-weight: 500;
 }
 
-/* تنسيق النصوص البيضاء داخل الكروت */
 .pill-badge {
     display: inline-block;
-    padding: 5px 15px;
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.9); /* لون خلفية أبيض تقريباً للكبسولة */
-    font-size: 14px;
-    color: #010203; /* لون نص داكن للكبسولة */
+    padding: 6px 18px;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.92);
+    font-size: 13.5px;
+    color: #0f172a;
     font-weight: 600;
 }
 
@@ -254,7 +267,6 @@ html, body {
     line-height: 1.4;
 }
 
-/* إخفاء الزر الأصلي */
 #button-Payload {
     display: none;
 }
@@ -269,9 +281,11 @@ html, body {
 
     <div class="main-container">
         <div class="header-title">
-            <svg class="lightning-icon" viewBox="0 0 24 24">
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-            </svg>
+            <div class="lightning-icon-wrap">
+                <svg viewBox="0 0 24 24">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
+            </div>
             <span>ALI HOST</span>
         </div>
         <div class="sub-title">Test Demo Mockup</div> <div class="status-section">
@@ -312,2114 +326,4 @@ html, body {
 </div>
 
 </body>
-</html>
-
-function jbdone() {
-var inp = document.getElementById("input");
-if(inp) inp.remove();
-window.progress.innerHTML="Jailbreak Done";
-goldhen();
-}
-function goldhen(){
-    progress.innerHTML="loading... please wait";
-    LoadedMSG="GoldHen Loaded";
-    PLfile = "goldhen.bin";
-    out_jb = "AllPL";
-    load_pocB();
-}
-function allset() {
-window.progress.innerHTML= LoadedMSG
-}
-</script>
-
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html, body {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: #080c1d;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* خلفية متدرجة مع أشكال دائرية متوهجة مضيئة */
-.background-wrapper {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background: radial-gradient(circle at 50% 50%, #0d1536 0%, #060917 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.glow-circle-left {
-    position: absolute;
-    width: 320px;
-    height: 320px;
-    left: -80px;
-    top: 25%;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(16, 107, 227, 0.8) 0%, rgba(10, 50, 140, 0.3) 60%, transparent 100%);
-    filter: blur(20px);
-}
-
-.glow-circle-right {
-    position: absolute;
-    width: 280px;
-    height: 280px;
-    right: -60px;
-    top: 20%;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(100, 35, 200, 0.8) 0%, rgba(50, 15, 120, 0.3) 60%, transparent 100%);
-    filter: blur(20px);
-}
-
-.main-container {
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 900px;
-    padding: 20px;
-}
-
-/* العنوان الرئيسي */
-.header-title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    font-size: 58px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    text-shadow: 0 0 20px rgba(160, 60, 255, 0.4);
-    margin-bottom: 8px;
-}
-
-.lightning-icon {
-    width: 42px;
-    height: 42px;
-    fill: #00d2ff;
-    filter: drop-shadow(0 0 8px #00d2ff);
-}
-
-.sub-title {
-    font-size: 19px;
-    color: #c4d1e8;
-    margin-bottom: 45px;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-}
-
-/* نص التحميل والجُملة الحركية */
-.status-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 45px;
-}
-
-.status-text {
-    font-size: 34px;
-    font-weight: 700;
-    color: #8b80f9;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
-    text-shadow: 0 0 15px rgba(139, 128, 249, 0.4);
-}
-
-.dots-loader {
-    display: flex;
-    gap: 10px;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #00d2ff;
-    animation: pulse 1.4s infinite ease-in-out both;
-}
-
-.dot:nth-child(2) {
-    background-color: #7b2cbf;
-    animation-delay: 0.2s;
-}
-
-.dot:nth-child(3) {
-    background-color: #b5179e;
-    animation-delay: 0.4s;
-}
-
-@keyframes pulse {
-    0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
-    40% { transform: scale(1.2); opacity: 1; }
-}
-
-/* الكروت الزجاجية (Glassmorphism Cards) */
-.card {
-    width: 100%;
-    background: rgba(20, 26, 60, 0.45);
-    border: 1px solid rgba(120, 130, 220, 0.25);
-    border-radius: 22px;
-    padding: 22px 30px;
-    margin-bottom: 22px;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.card-icon-container {
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #2b3a8c 0%, #171d4d 100%);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 25px;
-    flex-shrink: 0;
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
-}
-
-.card-icon {
-    width: 26px;
-    height: 26px;
-    fill: #a288ff;
-}
-
-.card-content {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.card-label {
-    font-size: 15px;
-    color: #d0d7e5;
-    font-weight: 500;
-}
-
-.pill-badge {
-    display: inline-block;
-    background: linear-gradient(90deg, #4733cc 0%, #8b44dd 100%);
-    padding: 8px 22px;
-    border-radius: 25px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #ffffff;
-    box-shadow: 0 4px 15px rgba(110, 50, 210, 0.4);
-    width: fit-content;
-}
-
-.thanks-list {
-    font-size: 16px;
-    color: #ffffff;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    line-height: 1.5;
-}
-
-/* الزر المخفي */
-#button-Payload {
-    display: none;
-}
-</style>
-</head>
-
-<body>
-
-<div class="background-wrapper">
-    <div class="glow-circle-left"></div>
-    <div class="glow-circle-right"></div>
-
-    <div class="main-container">
-        <!-- العنوان -->
-        <div class="header-title">
-            <svg class="lightning-icon" viewBox="0 0 24 24">
-                <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
-            </svg>
-            <span>ALI HOST</span>
-        </div>
-        <div class="sub-title">Auto Exploit GoldHen new PSFree Webkit 900fw</div>
-
-        <!-- حالة التهكير Jailbreaking -->
-        <div class="status-section">
-            <div id="progress" class="status-text">Jailbreaking...</div>
-            <div class="dots-loader">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-            </div>
-        </div>
-
-        <!-- كارت المصمم -->
-        <div class="card">
-            <div class="card-icon-container">
-                <svg class="card-icon" viewBox="0 0 24 24">
-                    <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
-                </svg>
-            </div>
-            <div class="card-content">
-                <div class="card-label">Designed & Hosted by:</div>
-                <div class="pill-badge">Ali mahmood and Yassir and Omar</div>
-            </div>
-        </div>
-
-        <!-- كارت الشكر -->
-        <div class="card">
-            <div class="card-icon-container">
-                <svg class="card-icon" viewBox="0 0 24 24">
-                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                </svg>
-            </div>
-            <div class="card-content">
-                <div class="card-label">Super Special Thanks To:</div>
-                <div class="thanks-list">
-                    Sleirsgoevy , Al Azif , ChendoChap , SiSTRo , Abc , Specter , Znullptr ...
-                </div>
-            </div>
-        </div>
-
-        <!-- زر مخفي لاستدعاء السكريبت -->
-        <button id="button-Payload" onclick="goldhen()"></button>
-    </div>
-</div>
-
-</body>
-</html>
-  padding:20px;
-  line-height:12px;
-  position:absolute;bottom:0px;
- }
- .title {
-  font-size:40px;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-weight:bolder;
-  margin-bottom:10px;
- }
- .yellow {
-  color:yellow;
- }
- .hue {
-  color:yellow;
-  padding:10px;
-  border-radius:10px;
-  animation:hue 5s linear infinite;
-  -webkit-animation: hue 5s linear infinite;
-  box-shadow: 0px 0px 50px yellow;
-  color:white;
-  background:rgba(255,255,0,0.4);
- }
- .hue:hover{
-  color:yellow;
-  background:transparent;
- }
- @keyframes hue{
- 0%{
- filter:hue-rotate(0deg);
- -webkit-filter:hue-rotate(0deg);
- }
- 10%{
- box-shadow: 0px 1px 50px yellow;
- }
- 20%{
- box-shadow: 1px 1px 50px yellow;
- }
- 30%{
- box-shadow: 1px 0px 50px yellow;
- }
- 40%{
-  box-shadow: 1px -1px 50px yellow;
- }
- 50%{
- box-shadow: 0px -1px 50px yellow;
- }
- 60%{
- box-shadow: -1px -1px 50px yellow;
- }
- 70%{
- box-shadow: -1px 0px 50px yellow;
- }
- 80%{
- box-shadow: -1px 1px 50px yellow;
- }
- 90%{
- box-shadow: 0px 1px 50px yellow;
- }
- 100%{
- filter:hue-rotate(360deg);
- -webkit-filter:hue-rotate(360deg);
- }
- }
- .text {
-  padding-bottom:50px;
- }
-  .back {
-   font-size:25px;
-   margin-top:10px;
-   display:block;
-   line-height:55px;
-   width:20%;
-   text-decoration:none;
-   height:50px;
-   background:white;
-   color:black;
-   border-radius:15px;
-  }
-  .back:hover{
-   border:2px solid white;
-   background:transparent;
-   box-sizing:border-box;
-   color:white;
-  }
- #psip {
-  text-align: center;
-  margin-left: 38%;
-  margin-right: auto;
-  width:15%;
-  display:flex;
-  position: absolute;
-  
-  background: rgba(0, 0, 0, 0.500);
-  border-radius: 2em;
-  border: none;
-  padding: 0.8em;
-  
-  color: #ffffff;
-  padding-left: 1.5em;
-  
-  outline: none;
-  box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px hsl(0, 0%, 2%);
-  backdrop-filter: blur(5px);
-}
-/* Modal Content */
-.modal-content {
-  font-family: BFARNAZ;
-  font-size: 18px;
-  position: relative;
-  background-color: #dddddd;
-  margin: auto;
-  padding: 0;
-  border: 1px solid #888;
-  width: 50%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s
-}
-button {
-            background:rgba(0,0,0,0.5);
-			box-shadow: 0 5px 20px 0 white;
-            border: 2px solid black;
-            border-radius: 10px;
-            width: 200px;
-            height: 43px;            
-            text-align: center;
-}
-button:hover {
-            box-shadow: 0 5px 50px 0 white;
-            color: white;
-            border-radius: 10px;
-			background-color: #0F0F53;
-}
-
-hr {
-padding:0;
-margin:0;
-opacity:0.7;
-}
-
-#progress {
- font-weight:bold;
- text-shadow: 4px 4px 4px black;
-
- font-size:17px;
-}
-.pointer {cursor: pointer;}
-
-h1 {
-text-shadow: 0.1em 0.1em 0.2em black;
-font-size: 25px;
-text-align: center;
-color: white;
-}
-
-.TextCaption{
-display: block;
-    font-size: 20px;
-    color: #fff;
-    text-decoration: none;
-}
-
-a img {
-    display: inline-block;  text-decoration: none;
-}
-
-a {
-    display: inline-block;  text-decoration: none;
-}
-
-a:hover img, a:hover .TextCaption{
-transform: scale(1.1)
-}
-
-    </style>
-<meta charset="utf-8">
-<title>ALI HOST • MODERN EDITION</title>
-<script>
-if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
-</script>
-<script src="int64.js"></script>
-<script src="rop.js"></script>
-<script src="kexploit.js" defer></script>
-<script src="exploit.js" defer></script>
-<script>
-function load_pocB(){
- var req = new XMLHttpRequest();
- req.responseType = "arraybuffer";
- req.open('GET', PLfile);
- req.send();
- req.onreadystatechange = function () {
-  if (req.readyState == 4) {
-   PLD = req.response;
-   var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
-   var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
-   var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
-   var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
-   tmp.set(new Uint8Array(req.response), 0);
-   tmp.set(padding, req.response.byteLength);
-   var shellcode = new Uint32Array(tmp.buffer);
-   pl.set(shellcode,0);
-   var pthread = p.malloc(0x10);
-   chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
-   allset();
-  }
- };
-}
-
-function jbdone() {
-document.getElementById("input").remove();
-window.progress.innerHTML="Jailbreak Done";
-goldhen();
-}
-function goldhen(){
-    progress.innerHTML="loading... please wait";
-    LoadedMSG="GoldHen Loaded";
-    PLfile = "goldhen.bin";
-    out_jb = "AllPL";
-    load_pocB();
-    }
-function allset() {
-window.progress.innerHTML= LoadedMSG
-}
-</script>
-</head>
-<body style='background-color:#1A1920'>
-<h1 style='text-shadow: 4px 4px 4px black;font-size:30px;text-align:center;text-shadow: 4px 4px 4px black;color:yellow;'>ALI HOST • MODERN EDITION</h1>
-<h1 id=progress style='font-size:25px;text-align:center;text-shadow: 4px 4px 4px black;color:white;'>Jailbreaking....</h1><br>
-<div style="text-align:center;display:none">
-<button id="button-Payload" onMouseOver="progress.innerHTML='GoldHen v2.4 Beta 18 9 by SISTR0 for PS4 9.00 Fw'" onmouseout="progress.innerHTML='Status'" type="button" onclick="goldhen()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:#CEC52A' > GoldHenV2.4b189</button>
-</div>
-
-<div id=all class="content" >
- 	    <div class="text" >
- 	        <br><span style="text-shadow: 4px 4px 4px black;" class="yellow" >Designed, Compiled by :</span >&nbsp;&nbsp; <span style="text-shadow: 4px 4px 4px black;" class="hue" >ALI AANI</span>
- 	        <br><br><br><br><span style="text-shadow: 4px 4px 4px black;" class="yellow" >ALI AANI • Special Thanks</span >&nbsp;&nbsp; <a style="font-size:30px;text-align:center;text-shadow: 4px 4px 4px black;color:white;">Sleirsgoevy , Al Azif , ChendoChap , SiSTRo ,Abc ,Specter ,Znullptr ... </a>
-	    </div>
-</div>
-</body>
-
-</html>
-  padding:20px;
-  line-height:12px;
-  position:absolute;bottom:0px;
- }
- .title {
-  font-size:40px;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-weight:bolder;
-  margin-bottom:10px;
- }
- .yellow {
-  color:yellow;
- }
- .hue {
-  color:yellow;
-  padding:10px;
-  border-radius:10px;
-  animation:hue 5s linear infinite;
-  -webkit-animation: hue 5s linear infinite;
-  box-shadow: 0px 0px 50px yellow;
-  color:white;
-  background:rgba(255,255,0,0.4);
- }
- .hue:hover{
-  color:yellow;
-  background:transparent;
- }
- @keyframes hue{
- 0%{
- filter:hue-rotate(0deg);
- -webkit-filter:hue-rotate(0deg);
- }
- 10%{
- box-shadow: 0px 1px 50px yellow;
- }
- 20%{
- box-shadow: 1px 1px 50px yellow;
- }
- 30%{
- box-shadow: 1px 0px 50px yellow;
- }
- 40%{
-  box-shadow: 1px -1px 50px yellow;
- }
- 50%{
- box-shadow: 0px -1px 50px yellow;
- }
- 60%{
- box-shadow: -1px -1px 50px yellow;
- }
- 70%{
- box-shadow: -1px 0px 50px yellow;
- }
- 80%{
- box-shadow: -1px 1px 50px yellow;
- }
- 90%{
- box-shadow: 0px 1px 50px yellow;
- }
- 100%{
- filter:hue-rotate(360deg);
- -webkit-filter:hue-rotate(360deg);
- }
- }
- .text {
-  padding-bottom:50px;
- }
-  .back {
-   font-size:25px;
-   margin-top:10px;
-   display:block;
-   line-height:55px;
-   width:20%;
-   text-decoration:none;
-   height:50px;
-   background:white;
-   color:black;
-   border-radius:15px;
-  }
-  .back:hover{
-   border:2px solid white;
-   background:transparent;
-   box-sizing:border-box;
-   color:white;
-  }
- #psip {
-  text-align: center;
-  margin-left: 38%;
-  margin-right: auto;
-  width:15%;
-  display:flex;
-  position: absolute;
-  
-  background: rgba(0, 0, 0, 0.500);
-  border-radius: 2em;
-  border: none;
-  padding: 0.8em;
-  
-  color: #ffffff;
-  padding-left: 1.5em;
-  
-  outline: none;
-  box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px hsl(0, 0%, 2%);
-  backdrop-filter: blur(5px);
-}
-/* Modal Content */
-.modal-content {
-  font-family: BFARNAZ;
-  font-size: 18px;
-  position: relative;
-  background-color: #dddddd;
-  margin: auto;
-  padding: 0;
-  border: 1px solid #888;
-  width: 50%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s
-}
-button {
-            background:rgba(0,0,0,0.5);
-			box-shadow: 0 5px 20px 0 white;
-            border: 2px solid black;
-            border-radius: 10px;
-            width: 200px;
-            height: 43px;            
-            text-align: center;
-}
-button:hover {
-            box-shadow: 0 5px 50px 0 white;
-            color: white;
-            border-radius: 10px;
-			background-color: #0F0F53;
-}
-
-hr {
-padding:0;
-margin:0;
-opacity:0.7;
-}
-
-#progress {
- font-weight:bold;
- text-shadow: 4px 4px 4px black;
-
- font-size:17px;
-}
-.pointer {cursor: pointer;}
-
-h1 {
-text-shadow: 0.1em 0.1em 0.2em black;
-font-size: 25px;
-text-align: center;
-color: white;
-}
-
-.TextCaption{
-display: block;
-    font-size: 20px;
-    color: #fff;
-    text-decoration: none;
-}
-
-a img {
-    display: inline-block;  text-decoration: none;
-}
-
-a {
-    display: inline-block;  text-decoration: none;
-}
-
-a:hover img, a:hover .TextCaption{
-transform: scale(1.1)
-}
-
-    </style>
-<meta charset="utf-8">
-<title>ALI HOST • MODERN EDITION</title>
-<script>
-if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
-</script>
-<script src="int64.js"></script>
-<script src="rop.js"></script>
-<script src="kexploit.js" defer></script>
-<script src="exploit.js" defer></script>
-<script>
-function load_pocB(){
- var req = new XMLHttpRequest();
- req.responseType = "arraybuffer";
- req.open('GET', PLfile);
- req.send();
- req.onreadystatechange = function () {
-  if (req.readyState == 4) {
-   PLD = req.response;
-   var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
-   var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
-   var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
-   var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
-   tmp.set(new Uint8Array(req.response), 0);
-   tmp.set(padding, req.response.byteLength);
-   var shellcode = new Uint32Array(tmp.buffer);
-   pl.set(shellcode,0);
-   var pthread = p.malloc(0x10);
-   chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
-   allset();
-  }
- };
-}
-
-function jbdone() {
-document.getElementById("input").remove();
-window.progress.innerHTML="Jailbreak Done";
-goldhen();
-}
-function goldhen(){
-    progress.innerHTML="loading... please wait";
-    LoadedMSG="GoldHen Loaded";
-    PLfile = "goldhen.bin";
-    out_jb = "AllPL";
-    load_pocB();
-    }
-function allset() {
-window.progress.innerHTML= LoadedMSG
-}
-</script>
-
-<style id="ali-modern-style">
-:root{
-  --bg1:#070b1a;
-  --bg2:#111a3a;
-  --card:rgba(19,28,62,.72);
-  --card-border:rgba(255,255,255,.12);
-  --text:#f8fbff;
-  --muted:#b8c4df;
-  --accent:#7c5cff;
-  --accent2:#20e3b2;
-  --accent3:#ff4ecd;
-}
-*{box-sizing:border-box}
-html,body{
-  margin:0;
-  min-height:100%;
-  font-family:Inter,system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;
-  font-size:18px;
-  font-weight:500;
-  text-align:center;
-  color:var(--text);
-  background:
-    radial-gradient(circle at 15% 15%, rgba(124,92,255,.30), transparent 30%),
-    radial-gradient(circle at 85% 20%, rgba(32,227,178,.18), transparent 28%),
-    radial-gradient(circle at 50% 100%, rgba(255,78,205,.15), transparent 35%),
-    linear-gradient(135deg,var(--bg1),var(--bg2));
-  background-attachment:fixed;
-  overflow:hidden;
-}
-body{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:28px 18px;
-}
-h1{
-  text-shadow:0 8px 30px rgba(0,0,0,.45);
-  font-size:clamp(24px,5vw,42px)!important;
-  text-align:center;
-  color:var(--text)!important;
-  margin:0 0 14px;
-  letter-spacing:.4px;
-}
-#progress{
-  font-weight:700;
-  text-shadow:none;
-  font-size:17px;
-  color:var(--muted)!important;
-  margin-bottom:20px;
-}
-.content{
-  width:min(920px,94vw);
-  height:auto;
-  min-height:150px;
-  margin:0;
-  background:var(--card);
-  color:var(--text);
-  font-size:19px;
-  text-align:center;
-  border-radius:28px;
-  padding:30px 24px;
-  line-height:1.6;
-  position:relative;
-  bottom:auto;
-  border:1px solid var(--card-border);
-  box-shadow:0 24px 70px rgba(0,0,0,.35);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-}
-.text{padding-bottom:0}
-.title{font-weight:800}
-.yellow{
-  color:#aeb9d4;
-  font-weight:700;
-}
-.hue{
-  display:inline-block;
-  color:#fff;
-  padding:7px 16px;
-  border-radius:999px;
-  animation:none;
-  -webkit-animation:none;
-  box-shadow:0 8px 30px rgba(124,92,255,.28);
-  background:linear-gradient(135deg,var(--accent),var(--accent3));
-  font-weight:800;
-}
-.hue:hover{
-  color:#fff;
-  background:linear-gradient(135deg,var(--accent2),var(--accent));
-  transform:translateY(-2px);
-}
-a{
-  display:inline-block;
-  text-decoration:none;
-  color:var(--text)!important;
-  transition:.2s ease;
-}
-a:hover{transform:translateY(-2px)}
-button{
-  background:linear-gradient(135deg,var(--accent),var(--accent3));
-  box-shadow:0 10px 35px rgba(124,92,255,.28);
-  border:0;
-  border-radius:16px;
-  width:200px;
-  height:48px;
-  text-align:center;
-  color:#fff;
-  font-weight:800;
-  cursor:pointer;
-}
-button:hover{
-  box-shadow:0 14px 45px rgba(32,227,178,.28);
-  border-radius:16px;
-  background:linear-gradient(135deg,var(--accent2),var(--accent));
-}
-hr{opacity:.25}
-.modal{
-  background-color:rgba(5,8,20,.72);
-  backdrop-filter:blur(8px);
-}
-.modal-content{
-  font-family:Inter,system-ui,sans-serif;
-  font-size:18px;
-  position:relative;
-  background:rgba(20,28,58,.95);
-  color:var(--text);
-  border:1px solid var(--card-border);
-  border-radius:24px;
-  width:min(620px,90%);
-  box-shadow:0 25px 80px rgba(0,0,0,.5);
-}
-.back{
-  font-size:18px;
-  margin-top:10px;
-  display:block;
-  line-height:50px;
-  width:120px;
-  height:50px;
-  background:linear-gradient(135deg,var(--accent),var(--accent3));
-  color:#fff;
-  border-radius:14px;
-}
-.back:hover{
-  border:0;
-  background:linear-gradient(135deg,var(--accent2),var(--accent));
-  color:#fff;
-}
-#psip{
-  margin-left:auto;
-  margin-right:auto;
-  width:min(320px,80%);
-  background:rgba(255,255,255,.08);
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,.12);
-  padding:.8em;
-  color:#fff;
-  outline:none;
-  box-shadow:0 10px 30px rgba(0,0,0,.18);
-  backdrop-filter:blur(12px);
-}
-@media(max-width:600px){
-  body{padding:20px 12px}
-  .content{padding:24px 16px;border-radius:22px;font-size:16px}
-  .content .hue{margin-top:8px}
-}
-</style>
-
-</head>
-<body style='background-color:#1A1920'>
-<h1 style='text-shadow: 4px 4px 4px black;font-size:30px;text-align:center;text-shadow: 4px 4px 4px black;color:yellow;'>ALI HOST • MODERN EDITION</h1>
-<h1 id=progress style='font-size:25px;text-align:center;text-shadow: 4px 4px 4px black;color:white;'>Jailbreaking....</h1><br>
-<div style="text-align:center;display:none">
-<button id="button-Payload" onMouseOver="progress.innerHTML='GoldHen v2.4 Beta 18 9 by SISTR0 for PS4 9.00 Fw'" onmouseout="progress.innerHTML='Status'" type="button" onclick="goldhen()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:#CEC52A' > GoldHenV2.4b189</button>
-</div>
-
-<div id=all class="content" >
- 	    <div class="text" >
- 	        <br><span style="text-shadow: 4px 4px 4px black;" class="yellow" >Designed, Compiled by :</span >&nbsp;&nbsp; <span style="text-shadow: 4px 4px 4px black;" class="hue" >ALI AANI</span>
- 	        <br><br><span style="font-weight:700;color:#b8c4df;">ALI AANI • Special Thanks</span>&nbsp;&nbsp; <a style="font-size:30px;text-align:center;text-shadow: 4px 4px 4px black;color:white;">Sleirsgoevy , Al Azif , ChendoChap , SiSTRo ,Abc ,Specter ,Znullptr ... </a>
-	    </div>
-</div>
-</body>
-
-</html>
-        top: 10%;
-        left: 20%;
-    }
-
-    body::after {
-        content: '';
-        position: absolute;
-        width: 300px;
-        height: 300px;
-        background: #4facfe;
-        filter: blur(150px);
-        opacity: 0.15;
-        bottom: 10%;
-        right: 20%;
-    }
-
-    .main-card {
-        background: rgba(15, 23, 42, 0.85);
-        border: 1px solid rgba(0, 242, 254, 0.2);
-        border-radius: 24px;
-        padding: 40px;
-        width: 90%;
-        max-width: 650px;
-        text-align: center;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        z-index: 10;
-    }
-
-    .badge {
-        display: inline-block;
-        background: rgba(0, 242, 254, 0.1);
-        color: #00f2fe;
-        border: 1px solid rgba(0, 242, 254, 0.3);
-        padding: 6px 16px;
-        border-radius: 50px;
-        font-size: 14px;
-        font-family: 'Orbitron', sans-serif;
-        font-weight: 800;
-        letter-spacing: 2px;
-        margin-bottom: 20px;
-    }
-
-    .title {
-        font-family: 'Orbitron', sans-serif;
-        font-size: 28px;
-        font-weight: 900;
-        letter-spacing: 1.5px;
-        color: #ffffff;
-        margin-bottom: 30px;
-        text-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
-    }
-
-    .title span {
-        color: #00f2fe;
-    }
-
-    .status-box {
-        background: rgba(8, 11, 18, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 16px;
-        padding: 25px;
-        margin-bottom: 25px;
-    }
-
-    #progress {
-        font-family: 'Orbitron', sans-serif;
-        font-size: 20px;
-        font-weight: 800;
-        color: #00f2fe;
-        letter-spacing: 1px;
-    }
-
-    .credits {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        padding-top: 20px;
-        font-size: 16px;
-        color: #94a3b8;
-    }
-
-    .developer {
-        font-family: 'Orbitron', sans-serif;
-        color: #ffffff;
-        font-weight: 800;
-        font-size: 15px;
-    }
-
-    .thanks {
-        font-size: 13px;
-        color: #64748b;
-        max-width: 60%;
-        text-align: right;
-    }
-</style>
-
-<script>
-if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
-</script>
-<script src="int64.js"></script>
-<script src="rop.js"></script>
-<script src="kexploit.js" defer></script>
-<script src="exploit.js" defer></script>
-<script>
-function load_pocB(){
- var req = new XMLHttpRequest();
- req.responseType = "arraybuffer";
- req.open('GET', PLfile);
- req.send();
- req.onreadystatechange = function () {
-  if (req.readyState == 4) {
-   PLD = req.response;
-   var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
-   var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
-   var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
-   var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
-   tmp.set(new Uint8Array(req.response), 0);
-   tmp.set(padding, req.response.byteLength);
-   var shellcode = new Uint32Array(tmp.buffer);
-   pl.set(shellcode,0);
-   var pthread = p.malloc(0x10);
-   chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
-   allset();
-  }
- };
-}
-
-function jbdone() {
-document.getElementById("input").remove();
-window.progress.innerHTML="Jailbreak Done";
-goldhen();
-}
-function goldhen(){
-    progress.innerHTML="Loading GoldHen...";
-    LoadedMSG="GoldHen Loaded Successfully";
-    PLfile = "goldhen.bin";
-    out_jb = "AllPL";
-    load_pocB();
-    }
-function allset() {
-window.progress.innerHTML= LoadedMSG
-}
-</script>
-</head>
-
-<body>
-
-<div class="main-card">
-    <div class="badge">PS4 9.00 FW</div>
-    <div class="title"><span>ALI</span> HOST EXPLOIT</div>
-
-    <div class="status-box">
-        <div id="progress">Jailbreaking...</div>
-    </div>
-
-    <div class="credits">
-        <div>
-            <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">Host By</div>
-            <div class="developer">Ali</div>
-        </div>
-        <div class="thanks">
-            Thanks: Sleirsgoevy, Al Azif, SiSTRo, Specter
-        </div>
-    </div>
-</div>
-
-<div style="display:none">
-    <button id="button-Payload" onclick="goldhen()">GoldHen</button>
-</div>
-
-</body>
-</html>
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    /* Top Banner Card */
-    .header-card {
-        background: var(--card-bg);
-        border: 1px solid rgba(0, 240, 255, 0.3);
-        border-radius: 16px;
-        padding: 25px;
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 240, 255, 0.05);
-        text-align: center;
-        position: relative;
-    }
-
-    .system-badge {
-        display: inline-block;
-        background: rgba(0, 240, 255, 0.1);
-        border: 1px solid var(--primary);
-        color: var(--primary);
-        padding: 4px 14px;
-        border-radius: 20px;
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        margin-bottom: 12px;
-    }
-
-    .main-title {
-        font-size: 28px;
-        font-weight: 800;
-        color: #ffffff;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 5px;
-    }
-
-    .main-title span {
-        color: var(--primary);
-        text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
-    }
-
-    /* Exploit Progress Grid */
-    .status-card {
-        background: var(--card-bg);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        padding: 30px;
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        text-align: center;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    }
-
-    #progress {
-        font-size: 22px;
-        font-weight: 700;
-        color: #ffffff;
-        margin-bottom: 20px;
-        letter-spacing: 0.5px;
-    }
-
-    .progress-bar-container {
-        width: 100%;
-        height: 10px;
-        background: rgba(255, 255, 255, 0.08);
-        border-radius: 10px;
-        overflow: hidden;
-        position: relative;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .progress-bar-fill {
-        height: 100%;
-        width: 100%;
-        background: linear-gradient(90deg, var(--primary), var(--secondary));
-        border-radius: 10px;
-        box-shadow: 0 0 12px var(--primary);
-        animation: pulseBar 2s infinite alternate;
-    }
-
-    @keyframes pulseBar {
-        0% { opacity: 0.7; }
-        100% { opacity: 1; filter: drop-shadow(0 0 8px var(--primary)); }
-    }
-
-    /* Team Info Cards Grid */
-    .info-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-    }
-
-    .info-card {
-        background: var(--card-bg);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 14px;
-        padding: 18px;
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        text-align: left;
-    }
-
-    .info-card-title {
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.5);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 8px;
-    }
-
-    .info-card-value {
-        font-size: 16px;
-        font-weight: 700;
-        color: var(--primary);
-    }
-
-    .thanks-list {
-        font-size: 13px;
-        color: #a0aab8;
-        line-height: 1.4;
-    }
-
-    @media (max-width: 600px) {
-        .info-grid {
-            grid-template-columns: 1fr;
-        }
-        .main-title {
-            font-size: 22px;
-        }
-    }
-</style>
-
-<script>
-if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
-</script>
-<script src="int64.js"></script>
-<script src="rop.js"></script>
-<script src="kexploit.js" defer></script>
-<script src="exploit.js" defer></script>
-<script>
-function load_pocB(){
- var req = new XMLHttpRequest();
- req.responseType = "arraybuffer";
- req.open('GET', PLfile);
- req.send();
- req.onreadystatechange = function () {
-  if (req.readyState == 4) {
-   PLD = req.response;
-   var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
-   var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
-   var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
-   var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
-   tmp.set(new Uint8Array(req.response), 0);
-   tmp.set(padding, req.response.byteLength);
-   var shellcode = new Uint32Array(tmp.buffer);
-   pl.set(shellcode,0);
-   var pthread = p.malloc(0x10);
-   chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
-   allset();
-  }
- };
-}
-
-function jbdone() {
-document.getElementById("input").remove();
-window.progress.innerHTML="Jailbreak Done";
-goldhen();
-}
-function goldhen(){
-    progress.innerHTML="loading... please wait";
-    LoadedMSG="GoldHen Loaded Successfully";
-    PLfile = "goldhen.bin";
-    out_jb = "AllPL";
-    load_pocB();
-    }
-function allset() {
-window.progress.innerHTML= LoadedMSG
-}
-</script>
-</head>
-
-<body>
-
-<div class="dashboard-container">
-    <!-- Header -->
-    <div class="header-card">
-        <div class="system-badge">PS4 Firmware 9.00</div>
-        <div class="main-title"><span>Ali</span> Host Exploit</div>
-    </div>
-
-    <!-- Exploit Status -->
-    <div class="status-card">
-        <div id="progress">Initializing System...</div>
-        <div class="progress-bar-container">
-            <div class="progress-bar-fill"></div>
-        </div>
-    </div>
-
-    <!-- Details Grid -->
-    <div class="info-grid">
-        <div class="info-card">
-            <div class="info-card-title">Developer & Host</div>
-            <div class="info-card-value">Ali</div>
-        </div>
-        <div class="info-card">
-            <div class="info-card-title">Special Thanks</div>
-            <div class="thanks-list">Sleirsgoevy, Al Azif, ChendoChap, SiSTRo, Specter, Znullptr</div>
-        </div>
-    </div>
-</div>
-
-<div style="display:none">
-    <button id="button-Payload" onclick="goldhen()">GoldHen</button>
-</div>
-
-</body>
-</html>
-        letter-spacing: 1px;
-        background: linear-gradient(90deg, #ff007f, #7928ca, #00dfd8);
-        background-size: 200% auto;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradientGlow 4s ease infinite;
-        margin-bottom: 15px;
-        text-transform: uppercase;
-        filter: drop-shadow(0px 4px 20px rgba(121, 40, 202, 0.6));
-    }
-
-    @keyframes gradientGlow {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-
-    #progress {
-        font-size: 26px;
-        font-weight: 700;
-        color: #00f2fe;
-        text-shadow: 0 0 12px rgba(0, 242, 254, 0.8), 0 0 25px rgba(0, 242, 254, 0.4);
-        margin: 25px 0;
-        letter-spacing: 1px;
-    }
-
-    button {
-        background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03));
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 2px solid rgba(0, 242, 254, 0.5);
-        border-radius: 16px;
-        width: 240px;
-        height: 52px;
-        font-size: 19px;
-        font-weight: bold;
-        color: #ffffff;
-        cursor: pointer;
-        box-shadow: 0 8px 25px rgba(0, 242, 254, 0.25);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    button:hover {
-        background: linear-gradient(135deg, #00f2fe, #4facfe);
-        color: #000000;
-        border-color: #00f2fe;
-        box-shadow: 0 0 30px rgba(0, 242, 254, 0.8);
-        transform: translateY(-3px) scale(1.03);
-    }
-
-    .content {
-        width: 90%;
-        max-width: 900px;
-        margin-bottom: 35px;
-        background: rgba(22, 18, 43, 0.55);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        color: white;
-        border-radius: 24px;
-        padding: 20px 30px;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-    }
-
-    .yellow {
-        color: #ff007f;
-        font-weight: 700;
-        font-size: 20px;
-        letter-spacing: 0.5px;
-    }
-
-    .hue {
-        display: inline-block;
-        padding: 8px 20px;
-        border-radius: 14px;
-        font-weight: 800;
-        font-size: 22px;
-        color: #ffffff;
-        background: linear-gradient(90deg, #7928ca, #ff007f, #00dfd8);
-        background-size: 200% auto;
-        box-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
-        animation: hueAnim 5s linear infinite;
-    }
-
-    @keyframes hueAnim {
-        0% { filter: hue-rotate(0deg); }
-        100% { filter: hue-rotate(360deg); }
-    }
-
-    .thanks-text {
-        font-size: 18px;
-        color: #e0e0e0;
-        margin-top: 15px;
-        line-height: 1.5;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    }
-</style>
-
-<script>
-if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
-</script>
-<script src="int64.js"></script>
-<script src="rop.js"></script>
-<script src="kexploit.js" defer></script>
-<script src="exploit.js" defer></script>
-<script>
-function load_pocB(){
- var req = new XMLHttpRequest();
- req.responseType = "arraybuffer";
- req.open('GET', PLfile);
- req.send();
- req.onreadystatechange = function () {
-  if (req.readyState == 4) {
-   PLD = req.response;
-   var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
-   var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
-   var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
-   var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
-   tmp.set(new Uint8Array(req.response), 0);
-   tmp.set(padding, req.response.byteLength);
-   var shellcode = new Uint32Array(tmp.buffer);
-   pl.set(shellcode,0);
-   var pthread = p.malloc(0x10);
-   chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
-   allset();
-  }
- };
-}
-
-function jbdone() {
-document.getElementById("input").remove();
-window.progress.innerHTML="Jailbreak Done";
-goldhen();
-}
-function goldhen(){
-    progress.innerHTML="loading... please wait";
-    LoadedMSG="GoldHen Loaded";
-    PLfile = "goldhen.bin";
-    out_jb = "AllPL";
-    load_pocB();
-    }
-function allset() {
-window.progress.innerHTML= LoadedMSG
-}
-</script>
-</head>
-
-<body>
-
-<div class="header-container">
-    <div class="main-title">Ali Host Auto Exploit GoldHen 9.00</div>
-    <div id="progress">Jailbreaking....</div>
-</div>
-
-<div style="text-align:center; display:none">
-    <button id="button-Payload" onMouseOver="progress.innerHTML='GoldHen v2.4 Beta 18 9 by SISTR0 for PS4 9.00 Fw'" onmouseout="progress.innerHTML='Status'" type="button" onclick="goldhen()">GoldHenV2.4b189</button>
-</div>
-
-<div id="all" class="content">
-    <div>
-        <span class="yellow">Designed & Hosted by:</span>&nbsp;&nbsp; 
-        <span class="hue">Ali</span>
-        <br><br>
-        <span class="yellow">Super Special Thanks To:</span>
-        <div class="thanks-text">Sleirsgoevy , Al Azif , ChendoChap , SiSTRo , Abc , Specter , Znullptr ...</div>
-    </div>
-</div>
-
-</body>
-</html>
-        letter-spacing: 1px;
-        background: linear-gradient(90deg, #ff007f, #7928ca, #00dfd8);
-        background-size: 200% auto;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradientGlow 4s ease infinite;
-        margin-bottom: 15px;
-        text-transform: uppercase;
-        filter: drop-shadow(0px 4px 20px rgba(121, 40, 202, 0.6));
-    }
-
-    @keyframes gradientGlow {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-
-    #progress {
-        font-size: 26px;
-        font-weight: 700;
-        color: #00f2fe;
-        text-shadow: 0 0 12px rgba(0, 242, 254, 0.8), 0 0 25px rgba(0, 242, 254, 0.4);
-        margin: 25px 0;
-        letter-spacing: 1px;
-    }
-
-    button {
-        background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03));
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 2px solid rgba(0, 242, 254, 0.5);
-        border-radius: 16px;
-        width: 240px;
-        height: 52px;
-        font-size: 19px;
-        font-weight: bold;
-        color: #ffffff;
-        cursor: pointer;
-        box-shadow: 0 8px 25px rgba(0, 242, 254, 0.25);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    button:hover {
-        background: linear-gradient(135deg, #00f2fe, #4facfe);
-        color: #000000;
-        border-color: #00f2fe;
-        box-shadow: 0 0 30px rgba(0, 242, 254, 0.8);
-        transform: translateY(-3px) scale(1.03);
-    }
-
-    .content {
-        width: 90%;
-        max-width: 900px;
-        margin-bottom: 35px;
-        background: rgba(22, 18, 43, 0.55);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        color: white;
-        border-radius: 24px;
-        padding: 20px 30px;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-    }
-
-    .yellow {
-        color: #ff007f;
-        font-weight: 700;
-        font-size: 20px;
-        letter-spacing: 0.5px;
-    }
-
-    .hue {
-        display: inline-block;
-        padding: 8px 20px;
-        border-radius: 14px;
-        font-weight: 800;
-        font-size: 22px;
-        color: #ffffff;
-        background: linear-gradient(90deg, #7928ca, #ff007f, #00dfd8);
-        background-size: 200% auto;
-        box-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
-        animation: hueAnim 5s linear infinite;
-    }
-
-    @keyframes hueAnim {
-        0% { filter: hue-rotate(0deg); }
-        100% { filter: hue-rotate(360deg); }
-    }
-
-    .thanks-text {
-        font-size: 18px;
-        color: #e0e0e0;
-        margin-top: 15px;
-        line-height: 1.5;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    }
-</style>
-
-<script>
-if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
-</script>
-<script src="int64.js"></script>
-<script src="rop.js"></script>
-<script src="kexploit.js" defer></script>
-<script src="exploit.js" defer></script>
-<script>
-function load_pocB(){
- var req = new XMLHttpRequest();
- req.responseType = "arraybuffer";
- req.open('GET', PLfile);
- req.send();
- req.onreadystatechange = function () {
-  if (req.readyState == 4) {
-   PLD = req.response;
-   var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
-   var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
-   var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
-   var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
-   tmp.set(new Uint8Array(req.response), 0);
-   tmp.set(padding, req.response.byteLength);
-   var shellcode = new Uint32Array(tmp.buffer);
-   pl.set(shellcode,0);
-   var pthread = p.malloc(0x10);
-   chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
-   allset();
-  }
- };
-}
-
-function jbdone() {
-document.getElementById("input").remove();
-window.progress.innerHTML="Jailbreak Done";
-goldhen();
-}
-function goldhen(){
-    progress.innerHTML="loading... please wait";
-    LoadedMSG="GoldHen Loaded";
-    PLfile = "goldhen.bin";
-    out_jb = "AllPL";
-    load_pocB();
-    }
-function allset() {
-window.progress.innerHTML= LoadedMSG
-}
-</script>
-</head>
-
-<body>
-
-<div class="header-container">
-    <div class="main-title">Ali mahmood and Yassir and Omar host 9.00</div>
-    <div id="progress">Jailbreaking....</div>
-</div>
-
-<div style="text-align:center; display:none">
-    <button id="button-Payload" onMouseOver="progress.innerHTML='GoldHen v2.4 Beta 18 9 by SISTR0 for PS4 9.00 Fw'" onmouseout="progress.innerHTML='Status'" type="button" onclick="goldhen()">GoldHenV2.4b189</button>
-</div>
-
-<div id="all" class="content">
-    <div>
-        <span class="yellow">Designed & Hosted by:</span>&nbsp;&nbsp; 
-        <span class="hue">Ali mahmood and Yassir and Omar</span>
-        <br><br>
-        <span class="yellow">Super Special Thanks To:</span>
-        <div class="thanks-text">Sleirsgoevy , Al Azif , ChendoChap , SiSTRo , Abc , Specter , Znullptr ...</div>
-    </div>
-</div>
-
-</body>
-</html>
-        font-size: 36px;
-        font-weight: 900;
-        letter-spacing: 1px;
-        background: linear-gradient(90deg, #ff007f, #7928ca, #00dfd8);
-        background-size: 200% auto;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradientGlow 4s ease infinite;
-        margin-bottom: 15px;
-        text-transform: uppercase;
-        filter: drop-shadow(0px 4px 20px rgba(121, 40, 202, 0.6));
-    }
-
-    @keyframes gradientGlow {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-
-    /* Status & Progress Text */
-    #progress {
-        font-size: 26px;
-        font-weight: 700;
-        color: #00f2fe;
-        text-shadow: 0 0 12px rgba(0, 242, 254, 0.8), 0 0 25px rgba(0, 242, 254, 0.4);
-        margin: 25px 0;
-        letter-spacing: 1px;
-    }
-
-    /* Modern Glassmorphic Button */
-    button {
-        background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03));
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 2px solid rgba(0, 242, 254, 0.5);
-        border-radius: 16px;
-        width: 240px;
-        height: 52px;
-        font-size: 19px;
-        font-weight: bold;
-        color: #ffffff;
-        cursor: pointer;
-        box-shadow: 0 8px 25px rgba(0, 242, 254, 0.25);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    button:hover {
-        background: linear-gradient(135deg, #00f2fe, #4facfe);
-        color: #000000;
-        border-color: #00f2fe;
-        box-shadow: 0 0 30px rgba(0, 242, 254, 0.8);
-        transform: translateY(-3px) scale(1.03);
-    }
-
-    /* Modern Footer Card */
-    .content {
-        width: 90%;
-        max-width: 900px;
-        margin-bottom: 35px;
-        background: rgba(22, 18, 43, 0.55);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        color: white;
-        border-radius: 24px;
-        padding: 20px 30px;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-    }
-
-    .yellow {
-        color: #ff007f;
-        font-weight: 700;
-        font-size: 20px;
-        letter-spacing: 0.5px;
-    }
-
-    .hue {
-        display: inline-block;
-        padding: 8px 20px;
-        border-radius: 14px;
-        font-weight: 800;
-        font-size: 22px;
-        color: #ffffff;
-        background: linear-gradient(90deg, #7928ca, #ff007f, #00dfd8);
-        background-size: 200% auto;
-        box-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
-        animation: hueAnim 5s linear infinite;
-    }
-
-    @keyframes hueAnim {
-        0% { filter: hue-rotate(0deg); }
-        100% { filter: hue-rotate(360deg); }
-    }
-
-    .thanks-text {
-        font-size: 18px;
-        color: #e0e0e0;
-        margin-top: 15px;
-        line-height: 1.5;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    }
-</style>
-
-<script>
-if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
-</script>
-<script src="int64.js"></script>
-<script src="rop.js"></script>
-<script src="kexploit.js" defer></script>
-<script src="exploit.js" defer></script>
-<script>
-function load_pocB(){
- var req = new XMLHttpRequest();
- req.responseType = "arraybuffer";
- req.open('GET', PLfile);
- req.send();
- req.onreadystatechange = function () {
-  if (req.readyState == 4) {
-   PLD = req.response;
-   var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
-   var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
-   var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
-   var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
-   tmp.set(new Uint8Array(req.response), 0);
-   tmp.set(padding, req.response.byteLength);
-   var shellcode = new Uint32Array(tmp.buffer);
-   pl.set(shellcode,0);
-   var pthread = p.malloc(0x10);
-   chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
-   allset();
-  }
- };
-}
-
-function jbdone() {
-document.getElementById("input").remove();
-window.progress.innerHTML="Jailbreak Done";
-goldhen();
-}
-function goldhen(){
-    progress.innerHTML="loading... please wait";
-    LoadedMSG="GoldHen Loaded";
-    PLfile = "goldhen.bin";
-    out_jb = "AllPL";
-    load_pocB();
-    }
-function allset() {
-window.progress.innerHTML= LoadedMSG
-}
-</script>
-</head>
-
-<body>
-
-<div class="header-container">
-    <div class="main-title">Ali mahmood and Yassir and Omar host 9.00</div>
-    <div id="progress">Jailbreaking....</div>
-</div>
-
-<div style="text-align:center; display:none">
-    <button id="button-Payload" onMouseOver="progress.innerHTML='GoldHen v2.4 Beta 18 9 by SISTR0 for PS4 9.00 Fw'" onmouseout="progress.innerHTML='Status'" type="button" onclick="goldhen()">GoldHenV2.4b189</button>
-</div>
-
-<div id="all" class="content">
-    <div>
-        <span class="yellow">Designed & Hosted by:</span>&nbsp;&nbsp; 
-        <span class="hue">Ali mahmood and Yassir and Omar</span>
-        <br><br>
-        <span class="yellow">Super Special Thanks To:</span>
-        <div class="thanks-text">Sleirsgoevy , Al Azif , ChendoChap , SiSTRo , Abc , Specter , Znullptr ...</div>
-    </div>
-</div>
-
-</body>
-</html>
-  padding:20px;
-  line-height:12px;
-  position:absolute;bottom:0px;
- }
- .title {
-  font-size:40px;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-weight:bolder;
-  margin-bottom:10px;
- }
- .yellow {
-  color:yellow;
- }
- .hue {
-  color:yellow;
-  padding:10px;
-  border-radius:10px;
-  animation:hue 5s linear infinite;
-  -webkit-animation: hue 5s linear infinite;
-  box-shadow: 0px 0px 50px yellow;
-  color:white;
-  background:rgba(255,255,0,0.4);
- }
- .hue:hover{
-  color:yellow;
-  background:transparent;
- }
- @keyframes hue{
- 0%{
- filter:hue-rotate(0deg);
- -webkit-filter:hue-rotate(0deg);
- }
- 10%{
- box-shadow: 0px 1px 50px yellow;
- }
- 20%{
- box-shadow: 1px 1px 50px yellow;
- }
- 30%{
- box-shadow: 1px 0px 50px yellow;
- }
- 40%{
-  box-shadow: 1px -1px 50px yellow;
- }
- 50%{
- box-shadow: 0px -1px 50px yellow;
- }
- 60%{
- box-shadow: -1px -1px 50px yellow;
- }
- 70%{
- box-shadow: -1px 0px 50px yellow;
- }
- 80%{
- box-shadow: -1px 1px 50px yellow;
- }
- 90%{
- box-shadow: 0px 1px 50px yellow;
- }
- 100%{
- filter:hue-rotate(360deg);
- -webkit-filter:hue-rotate(360deg);
- }
- }
- .text {
-  padding-bottom:50px;
- }
-  .back {
-   font-size:25px;
-   margin-top:10px;
-   display:block;
-   line-height:55px;
-   width:20%;
-   text-decoration:none;
-   height:50px;
-   background:white;
-   color:black;
-   border-radius:15px;
-  }
-  .back:hover{
-   border:2px solid white;
-   background:transparent;
-   box-sizing:border-box;
-   color:white;
-  }
- #psip {
-  text-align: center;
-  margin-left: 38%;
-  margin-right: auto;
-  width:15%;
-  display:flex;
-  position: absolute;
-  
-  background: rgba(0, 0, 0, 0.500);
-  border-radius: 2em;
-  border: none;
-  padding: 0.8em;
-  
-  color: #ffffff;
-  padding-left: 1.5em;
-  
-  outline: none;
-  box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px hsl(0, 0%, 2%);
-  backdrop-filter: blur(5px);
-}
-/* Modal Content */
-.modal-content {
-  font-family: BFARNAZ;
-  font-size: 18px;
-  position: relative;
-  background-color: #dddddd;
-  margin: auto;
-  padding: 0;
-  border: 1px solid #888;
-  width: 50%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s
-}
-button {
-            background:rgba(0,0,0,0.5);
-			box-shadow: 0 5px 20px 0 white;
-            border: 2px solid black;
-            border-radius: 10px;
-            width: 200px;
-            height: 43px;            
-            text-align: center;
-}
-button:hover {
-            box-shadow: 0 5px 50px 0 white;
-            color: white;
-            border-radius: 10px;
-			background-color: #0F0F53;
-}
-
-hr {
-padding:0;
-margin:0;
-opacity:0.7;
-}
-
-#progress {
- font-weight:bold;
- text-shadow: 4px 4px 4px black;
-
- font-size:17px;
-}
-.pointer {cursor: pointer;}
-
-h1 {
-text-shadow: 0.1em 0.1em 0.2em black;
-font-size: 25px;
-text-align: center;
-color: white;
-}
-
-.TextCaption{
-display: block;
-    font-size: 20px;
-    color: #fff;
-    text-decoration: none;
-}
-
-a img {
-    display: inline-block;  text-decoration: none;
-}
-
-a {
-    display: inline-block;  text-decoration: none;
-}
-
-a:hover img, a:hover .TextCaption{
-transform: scale(1.1)
-}
-
-    </style>
-<meta charset="utf-8">
-<title>Karo Host Auto Exploit GoldHen new PSFree Webkit 900fw</title>
-<script>
-if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
-</script>
-<script src="int64.js"></script>
-<script src="rop.js"></script>
-<script src="kexploit.js" defer></script>
-<script src="exploit.js" defer></script>
-<script>
-function load_pocB(){
- var req = new XMLHttpRequest();
- req.responseType = "arraybuffer";
- req.open('GET', PLfile);
- req.send();
- req.onreadystatechange = function () {
-  if (req.readyState == 4) {
-   PLD = req.response;
-   var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
-   var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
-   var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
-   var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
-   tmp.set(new Uint8Array(req.response), 0);
-   tmp.set(padding, req.response.byteLength);
-   var shellcode = new Uint32Array(tmp.buffer);
-   pl.set(shellcode,0);
-   var pthread = p.malloc(0x10);
-   chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
-   allset();
-  }
- };
-}
-
-function jbdone() {
-document.getElementById("input").remove();
-window.progress.innerHTML="Jailbreak Done";
-goldhen();
-}
-function goldhen(){
-    progress.innerHTML="loading... please wait";
-    LoadedMSG="GoldHen Loaded";
-    PLfile = "goldhen.bin";
-    out_jb = "AllPL";
-    load_pocB();
-    }
-function allset() {
-window.progress.innerHTML= LoadedMSG
-}
-</script>
-</head>
-<body style='background-color:#1A1920'>
-<h1 style='text-shadow: 4px 4px 4px black;font-size:30px;text-align:center;text-shadow: 4px 4px 4px black;color:yellow;'>Karo Host Auto Exploit GoldHen new PSFree Webkit 900fw</h1>
-<h1 id=progress style='font-size:25px;text-align:center;text-shadow: 4px 4px 4px black;color:white;'>Jailbreaking....</h1><br>
-<div style="text-align:center;display:none">
-<button id="button-Payload" onMouseOver="progress.innerHTML='GoldHen v2.4 Beta 18 9 by SISTR0 for PS4 9.00 Fw'" onmouseout="progress.innerHTML='Status'" type="button" onclick="goldhen()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:#CEC52A' > GoldHenV2.4b189</button>
-</div>
-
-<div id=all class="content" >
- 	    <div class="text" >
- 	        <br><span style="text-shadow: 4px 4px 4px black;" class="yellow" >Designed, Compiled by :</span >&nbsp;&nbsp; <span style="text-shadow: 4px 4px 4px black;" class="hue" >Karo Sharifi</span>
- 	        <br><br><br><br><span style="text-shadow: 4px 4px 4px black;" class="yellow" >Super Special Thanks To :</span >&nbsp;&nbsp; <a style="font-size:30px;text-align:center;text-shadow: 4px 4px 4px black;color:white;">Sleirsgoevy , Al Azif , ChendoChap , SiSTRo ,Abc ,Specter ,Znullptr ... </a>
-	    </div>
-</div>
-</body>
-
 </html>
