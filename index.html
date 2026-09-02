@@ -1,39 +1,454 @@
 <html manifest="Cache.manifest">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALI HOST PS4 9.00</title>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800;900&family=Rajdhani:wght@600;700&display=swap');
+    html, body{
+margin:auto;
+font-family:sans-serif;
+font-size:20px;
+font-weight:lighter;
+text-align: center;
+color:#FFFFFF;
+background-size:cover;
+overflow: hidden;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+ .content {
+  width:90%;
+  height:15%;
+  margin-left:3.5%;
+  background:rgba(0,0,0,0.5);
+  color:white;
+  margin-top:0%;
+  font-size:25px;
+  text-align:center;
+  border-radius:30px;
+  padding:20px;
+  line-height:12px;
+  position:absolute;bottom:0px;
+ }
+ .title {
+  font-size:40px;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-weight:bolder;
+  margin-bottom:10px;
+ }
+ .yellow {
+  color:yellow;
+ }
+ .hue {
+  color:yellow;
+  padding:10px;
+  border-radius:10px;
+  animation:hue 5s linear infinite;
+  -webkit-animation: hue 5s linear infinite;
+  box-shadow: 0px 0px 50px yellow;
+  color:white;
+  background:rgba(255,255,0,0.4);
+ }
+ .hue:hover{
+  color:yellow;
+  background:transparent;
+ }
+ @keyframes hue{
+ 0%{
+ filter:hue-rotate(0deg);
+ -webkit-filter:hue-rotate(0deg);
+ }
+ 10%{
+ box-shadow: 0px 1px 50px yellow;
+ }
+ 20%{
+ box-shadow: 1px 1px 50px yellow;
+ }
+ 30%{
+ box-shadow: 1px 0px 50px yellow;
+ }
+ 40%{
+  box-shadow: 1px -1px 50px yellow;
+ }
+ 50%{
+ box-shadow: 0px -1px 50px yellow;
+ }
+ 60%{
+ box-shadow: -1px -1px 50px yellow;
+ }
+ 70%{
+ box-shadow: -1px 0px 50px yellow;
+ }
+ 80%{
+ box-shadow: -1px 1px 50px yellow;
+ }
+ 90%{
+ box-shadow: 0px 1px 50px yellow;
+ }
+ 100%{
+ filter:hue-rotate(360deg);
+ -webkit-filter:hue-rotate(360deg);
+ }
+ }
+ .text {
+  padding-bottom:50px;
+ }
+  .back {
+   font-size:25px;
+   margin-top:10px;
+   display:block;
+   line-height:55px;
+   width:20%;
+   text-decoration:none;
+   height:50px;
+   background:white;
+   color:black;
+   border-radius:15px;
+  }
+  .back:hover{
+   border:2px solid white;
+   background:transparent;
+   box-sizing:border-box;
+   color:white;
+  }
+ #psip {
+  text-align: center;
+  margin-left: 38%;
+  margin-right: auto;
+  width:15%;
+  display:flex;
+  position: absolute;
+  
+  background: rgba(0, 0, 0, 0.500);
+  border-radius: 2em;
+  border: none;
+  padding: 0.8em;
+  
+  color: #ffffff;
+  padding-left: 1.5em;
+  
+  outline: none;
+  box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px hsl(0, 0%, 2%);
+  backdrop-filter: blur(5px);
+}
+/* Modal Content */
+.modal-content {
+  font-family: BFARNAZ;
+  font-size: 18px;
+  position: relative;
+  background-color: #dddddd;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+button {
+            background:rgba(0,0,0,0.5);
+			box-shadow: 0 5px 20px 0 white;
+            border: 2px solid black;
+            border-radius: 10px;
+            width: 200px;
+            height: 43px;            
+            text-align: center;
+}
+button:hover {
+            box-shadow: 0 5px 50px 0 white;
+            color: white;
+            border-radius: 10px;
+			background-color: #0F0F53;
+}
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        user-select: none;
+hr {
+padding:0;
+margin:0;
+opacity:0.7;
+}
+
+#progress {
+ font-weight:bold;
+ text-shadow: 4px 4px 4px black;
+
+ font-size:17px;
+}
+.pointer {cursor: pointer;}
+
+h1 {
+text-shadow: 0.1em 0.1em 0.2em black;
+font-size: 25px;
+text-align: center;
+color: white;
+}
+
+.TextCaption{
+display: block;
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+a img {
+    display: inline-block;  text-decoration: none;
+}
+
+a {
+    display: inline-block;  text-decoration: none;
+}
+
+a:hover img, a:hover .TextCaption{
+transform: scale(1.1)
+}
+
+    </style>
+<meta charset="utf-8">
+<title>ALI HOST • MODERN EDITION</title>
+<script>
+if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
+</script>
+<script src="int64.js"></script>
+<script src="rop.js"></script>
+<script src="kexploit.js" defer></script>
+<script src="exploit.js" defer></script>
+<script>
+function load_pocB(){
+ var req = new XMLHttpRequest();
+ req.responseType = "arraybuffer";
+ req.open('GET', PLfile);
+ req.send();
+ req.onreadystatechange = function () {
+  if (req.readyState == 4) {
+   PLD = req.response;
+   var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
+   var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
+   var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
+   var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
+   tmp.set(new Uint8Array(req.response), 0);
+   tmp.set(padding, req.response.byteLength);
+   var shellcode = new Uint32Array(tmp.buffer);
+   pl.set(shellcode,0);
+   var pthread = p.malloc(0x10);
+   chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
+   allset();
+  }
+ };
+}
+
+function jbdone() {
+document.getElementById("input").remove();
+window.progress.innerHTML="Jailbreak Done";
+goldhen();
+}
+function goldhen(){
+    progress.innerHTML="loading... please wait";
+    LoadedMSG="GoldHen Loaded";
+    PLfile = "goldhen.bin";
+    out_jb = "AllPL";
+    load_pocB();
     }
+function allset() {
+window.progress.innerHTML= LoadedMSG
+}
+</script>
 
-    body {
-        font-family: 'Rajdhani', sans-serif;
-        background: #080b12;
-        color: #ffffff;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        position: relative;
-    }
+<style id="ali-modern-style">
+:root{
+  --bg1:#070b1a;
+  --bg2:#111a3a;
+  --card:rgba(19,28,62,.72);
+  --card-border:rgba(255,255,255,.12);
+  --text:#f8fbff;
+  --muted:#b8c4df;
+  --accent:#7c5cff;
+  --accent2:#20e3b2;
+  --accent3:#ff4ecd;
+}
+*{box-sizing:border-box}
+html,body{
+  margin:0;
+  min-height:100%;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;
+  font-size:18px;
+  font-weight:500;
+  text-align:center;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 15% 15%, rgba(124,92,255,.30), transparent 30%),
+    radial-gradient(circle at 85% 20%, rgba(32,227,178,.18), transparent 28%),
+    radial-gradient(circle at 50% 100%, rgba(255,78,205,.15), transparent 35%),
+    linear-gradient(135deg,var(--bg1),var(--bg2));
+  background-attachment:fixed;
+  overflow:hidden;
+}
+body{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:28px 18px;
+}
+h1{
+  text-shadow:0 8px 30px rgba(0,0,0,.45);
+  font-size:clamp(24px,5vw,42px)!important;
+  text-align:center;
+  color:var(--text)!important;
+  margin:0 0 14px;
+  letter-spacing:.4px;
+}
+#progress{
+  font-weight:700;
+  text-shadow:none;
+  font-size:17px;
+  color:var(--muted)!important;
+  margin-bottom:20px;
+}
+.content{
+  width:min(920px,94vw);
+  height:auto;
+  min-height:150px;
+  margin:0;
+  background:var(--card);
+  color:var(--text);
+  font-size:19px;
+  text-align:center;
+  border-radius:28px;
+  padding:30px 24px;
+  line-height:1.6;
+  position:relative;
+  bottom:auto;
+  border:1px solid var(--card-border);
+  box-shadow:0 24px 70px rgba(0,0,0,.35);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+.text{padding-bottom:0}
+.title{font-weight:800}
+.yellow{
+  color:#aeb9d4;
+  font-weight:700;
+}
+.hue{
+  display:inline-block;
+  color:#fff;
+  padding:7px 16px;
+  border-radius:999px;
+  animation:none;
+  -webkit-animation:none;
+  box-shadow:0 8px 30px rgba(124,92,255,.28);
+  background:linear-gradient(135deg,var(--accent),var(--accent3));
+  font-weight:800;
+}
+.hue:hover{
+  color:#fff;
+  background:linear-gradient(135deg,var(--accent2),var(--accent));
+  transform:translateY(-2px);
+}
+a{
+  display:inline-block;
+  text-decoration:none;
+  color:var(--text)!important;
+  transition:.2s ease;
+}
+a:hover{transform:translateY(-2px)}
+button{
+  background:linear-gradient(135deg,var(--accent),var(--accent3));
+  box-shadow:0 10px 35px rgba(124,92,255,.28);
+  border:0;
+  border-radius:16px;
+  width:200px;
+  height:48px;
+  text-align:center;
+  color:#fff;
+  font-weight:800;
+  cursor:pointer;
+}
+button:hover{
+  box-shadow:0 14px 45px rgba(32,227,178,.28);
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--accent2),var(--accent));
+}
+hr{opacity:.25}
+.modal{
+  background-color:rgba(5,8,20,.72);
+  backdrop-filter:blur(8px);
+}
+.modal-content{
+  font-family:Inter,system-ui,sans-serif;
+  font-size:18px;
+  position:relative;
+  background:rgba(20,28,58,.95);
+  color:var(--text);
+  border:1px solid var(--card-border);
+  border-radius:24px;
+  width:min(620px,90%);
+  box-shadow:0 25px 80px rgba(0,0,0,.5);
+}
+.back{
+  font-size:18px;
+  margin-top:10px;
+  display:block;
+  line-height:50px;
+  width:120px;
+  height:50px;
+  background:linear-gradient(135deg,var(--accent),var(--accent3));
+  color:#fff;
+  border-radius:14px;
+}
+.back:hover{
+  border:0;
+  background:linear-gradient(135deg,var(--accent2),var(--accent));
+  color:#fff;
+}
+#psip{
+  margin-left:auto;
+  margin-right:auto;
+  width:min(320px,80%);
+  background:rgba(255,255,255,.08);
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.12);
+  padding:.8em;
+  color:#fff;
+  outline:none;
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+  backdrop-filter:blur(12px);
+}
+@media(max-width:600px){
+  body{padding:20px 12px}
+  .content{padding:24px 16px;border-radius:22px;font-size:16px}
+  .content .hue{margin-top:8px}
+}
+</style>
 
-    /* خلفية متدرجة حديثة */
-    body::before {
-        content: '';
-        position: absolute;
-        width: 300px;
-        height: 300px;
-        background: #00f2fe;
-        filter: blur(150px);
-        opacity: 0.15;
+</head>
+<body style='background-color:#1A1920'>
+<h1 style='text-shadow: 4px 4px 4px black;font-size:30px;text-align:center;text-shadow: 4px 4px 4px black;color:yellow;'>ALI HOST • MODERN EDITION</h1>
+<h1 id=progress style='font-size:25px;text-align:center;text-shadow: 4px 4px 4px black;color:white;'>Jailbreaking....</h1><br>
+<div style="text-align:center;display:none">
+<button id="button-Payload" onMouseOver="progress.innerHTML='GoldHen v2.4 Beta 18 9 by SISTR0 for PS4 9.00 Fw'" onmouseout="progress.innerHTML='Status'" type="button" onclick="goldhen()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:#CEC52A' > GoldHenV2.4b189</button>
+</div>
+
+<div id=all class="content" >
+ 	    <div class="text" >
+ 	        <br><span style="text-shadow: 4px 4px 4px black;" class="yellow" >Designed, Compiled by :</span >&nbsp;&nbsp; <span style="text-shadow: 4px 4px 4px black;" class="hue" >ALI AANI</span>
+ 	        <br><br><span style="font-weight:700;color:#b8c4df;">ALI AANI • Special Thanks</span>&nbsp;&nbsp; <a style="font-size:30px;text-align:center;text-shadow: 4px 4px 4px black;color:white;">Sleirsgoevy , Al Azif , ChendoChap , SiSTRo ,Abc ,Specter ,Znullptr ... </a>
+	    </div>
+</div>
+</body>
+
+</html>
         top: 10%;
         left: 20%;
     }
